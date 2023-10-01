@@ -1,19 +1,18 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Context} from '../context/BlogContext';
 import {styles} from '../styles/styles';
 
-export default function CreateScreen(props) {
+export default function CreateEditScreen(props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const {addBlogPost, state} = useContext(Context);
-
-  const editBlogPost = state.find((post) => post.id === props.navigation.getParam('id'));
+  const {addBlogPost, state, editBlogPost} = useContext(Context);
+  const editPost = state.find((post) => post.id === props.navigation.getParam('id'));
 
   useEffect(() => {
-    if (editBlogPost) {
-      setContent(editBlogPost.content);
-      setTitle(editBlogPost.title);
+    if (editPost) {
+      setContent(editPost.content);
+      setTitle(editPost.title);
     }
   }, []);
 
@@ -37,6 +36,12 @@ export default function CreateScreen(props) {
       />
       <TouchableOpacity
         onPress={() => {
+          if (editPost && !isButtonDisabled) {
+            editBlogPost(title, content, editPost.id, () => {
+              props.navigation.navigate('Index');
+            })
+            return
+          }
           if (!isButtonDisabled) {
             addBlogPost(title, content, () => {
               props.navigation.navigate('Index');
@@ -47,7 +52,7 @@ export default function CreateScreen(props) {
         disabled={isButtonDisabled}
       >
         <Text style={{color: 'white', fontSize: 17}}>
-          {editBlogPost ? 'Edit Blog Post' : 'Add Blog Post'}
+          {editPost ? 'Edit Blog Post' : 'Add Blog Post'}
         </Text>
       </TouchableOpacity>
     </View>
