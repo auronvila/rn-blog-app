@@ -6,11 +6,13 @@ import {styles} from '../styles/styles';
 
 export default function IndexScreen(props) {
   const {state, addBlogPost, deleteBlogPost} = useContext(Context)
+
+
   return (
     <View>
       <Button onPress={addBlogPost} title={'Add Post'}/>
       <FlatList data={state} keyExtractor={(blogPost) => blogPost.title} renderItem={({item}) => {
-        return <TouchableOpacity onPress={() => props.navigation.navigate('ShowScreen', {id: item.id})}>
+        return <TouchableOpacity onPress={() => props.navigation.navigate('Show', {id: item.id})}>
           <View style={styles.row}>
             <Text style={styles.title}>{item.title} - {item.id}</Text>
             <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
@@ -21,4 +23,13 @@ export default function IndexScreen(props) {
       }}/>
     </View>
   )
+}
+IndexScreen.navigationOptions = (props) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity style={{marginRight: 15}} onPress={() => props.navigation.navigate('Create')}>
+        <Feather name="plus" size={30}/>
+      </TouchableOpacity>
+    ),
+  }
 }
