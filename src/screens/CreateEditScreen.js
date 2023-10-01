@@ -38,7 +38,8 @@ export default function CreateEditScreen(props) {
         onPress={() => {
           if (editPost && !isButtonDisabled) {
             editBlogPost(title, content, editPost.id, () => {
-              props.navigation.navigate('Index');
+              // pop sends the user back 1 screen we can think it functions as a navigate function.
+              props.navigation.pop();
             })
             return
           }
