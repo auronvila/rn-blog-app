@@ -1,4 +1,4 @@
-import { FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, StatusBar, Text, TouchableOpacity, View} from 'react-native';
 import {useContext} from 'react';
 import {Context} from '../context/BlogContext';
 import {Feather} from '@expo/vector-icons';
@@ -21,6 +21,7 @@ export default function IndexScreen(props) {
           </View>
         </TouchableOpacity>
       }}/>
+      <StatusBar barStyle={'default'}/>
     </View>
   )
 }

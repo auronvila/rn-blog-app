@@ -49,7 +49,8 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     color: 'red',
     fontSize: 17,
-    fontWeight: '600'
+    fontWeight: '600',
+    marginHorizontal:1,
   },
   container: {
     borderWidth: 1,
@@ -61,9 +62,9 @@ export const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
+        shadowOffset: { width: 4, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 7,
       },
       android: {
         elevation: 4,
