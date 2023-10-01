@@ -2,15 +2,18 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import {useContext} from 'react';
 import {Context} from '../context/BlogContext';
 import {EvilIcons} from '@expo/vector-icons'
+import {styles} from '../styles/styles';
 
 export default function ShowScreen(props) {
   const {state} = useContext(Context)
 
   const blogPost = state.find(post => post.id === props.navigation.getParam('id'))
   return (
-    <View>
-      <Text>{blogPost.title}</Text>
-      <Text>{blogPost.content}</Text>
+    <View style={styles.container}>
+      <Text style={styles.showTitle}>Your blog Title</Text>
+      <Text style={[styles.showTitle,styles.showTitle2]}>{blogPost.title}</Text>
+      <Text style={styles.showTitle}>Your Blog Content</Text>
+      <Text style={[styles.showTitle,styles.showTitle2]}>{blogPost.content}</Text>
     </View>
   )
 }

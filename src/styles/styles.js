@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   row: {
@@ -45,10 +45,43 @@ export const styles = StyleSheet.create({
     backgroundColor: 'gray'
   },
   errorMessage: {
-    marginTop:10,
+    marginTop: 10,
     alignSelf: 'center',
     color: 'red',
     fontSize: 17,
     fontWeight: '600'
+  },
+  container: {
+    borderWidth: 1,
+    borderColor: 'black',
+    width: 250,
+    height: 250,
+    marginTop: 160,
+    alignSelf: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
+  },
+  showTitle:{
+    alignSelf:'center',
+    fontSize:20,
+    fontWeight:'600',
+    marginTop:20,
+  },
+  showTitle2:{
+    fontSize:15,
+    fontWeight:'400',
+    marginBottom:20,
+    marginTop:15,
   }
+
+
 })
