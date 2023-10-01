@@ -32,13 +32,23 @@ export const styles = StyleSheet.create({
   },
   buttonStyle: {
     margin: 15,
-    marginTop:40,
+    marginTop: 40,
     alignSelf: 'center',
     backgroundColor: 'blue',
     padding: 20,
     paddingHorizontal: 40,
-    borderWidth:1,
+    borderWidth: 1,
     borderRadius: 9,
     borderColor: 'black'
+  },
+  isButtonDisabled: {
+    backgroundColor: 'gray'
+  },
+  errorMessage: {
+    marginTop:10,
+    alignSelf: 'center',
+    color: 'red',
+    fontSize: 17,
+    fontWeight: '600'
   }
 })

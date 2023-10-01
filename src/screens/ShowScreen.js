@@ -17,7 +17,8 @@ export default function ShowScreen(props) {
 ShowScreen.navigationOptions = (props) => {
   return {
     headerRight: () => (
-      <TouchableOpacity style={{marginRight: 15}} onPress={() => props.navigation.navigate('Edit')}>
+      <TouchableOpacity style={{marginRight: 15}}
+                        onPress={() => props.navigation.navigate('Create', {id: props.navigation.getParam('id')})}>
         <EvilIcons name="pencil" size={35}/>
       </TouchableOpacity>
     ),
