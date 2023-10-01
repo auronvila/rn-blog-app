@@ -5,12 +5,11 @@ import {Feather} from '@expo/vector-icons';
 import {styles} from '../styles/styles';
 
 export default function IndexScreen(props) {
-  const {state, addBlogPost, deleteBlogPost} = useContext(Context)
+  const {state, deleteBlogPost} = useContext(Context)
 
 
   return (
     <View>
-      <Button onPress={addBlogPost} title={'Add Post'}/>
       <FlatList data={state} keyExtractor={(blogPost) => blogPost.title} renderItem={({item}) => {
         return <TouchableOpacity onPress={() => props.navigation.navigate('Show', {id: item.id})}>
           <View style={styles.row}>

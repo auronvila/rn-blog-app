@@ -6,7 +6,7 @@ import {styles} from '../styles/styles';
 export default function CreateScreen(props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const {state} = useContext(Context);
+  const {addBlogPost} = useContext(Context);
 
   return (
     <View>
@@ -14,7 +14,12 @@ export default function CreateScreen(props) {
       <TextInput style={[styles.title, styles.input]} value={title} onChangeText={(event) => setTitle(event)}/>
       <Text style={styles.formTitle}>Enter Content</Text>
       <TextInput style={[styles.title, styles.input]} value={content} onChangeText={(event) => setContent(event)}/>
-      <TouchableOpacity style={styles.buttonStyle}><Text style={{color:'white',fontSize:17}}>Add Blog Post</Text></TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        addBlogPost(title, content, () => {
+          props.navigation.navigate('Index')
+        })
+      }} style={styles.buttonStyle}><Text
+        style={{color: 'white', fontSize: 17}}>Add Blog Post</Text></TouchableOpacity>
     </View>
   )
 }
